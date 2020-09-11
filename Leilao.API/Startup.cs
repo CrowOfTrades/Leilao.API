@@ -17,7 +17,12 @@ namespace Leilao.API
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+            Configuration = builder.Build();
+
+            //Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }

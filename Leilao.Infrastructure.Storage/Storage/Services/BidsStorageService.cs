@@ -1,8 +1,10 @@
 ﻿using Leilao.Infrastructure.Storage.Storage.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Text;
+using System.Configuration;
 
 namespace Leilao.Infrastructure.Storage.Storage.Services
 {
@@ -10,7 +12,7 @@ namespace Leilao.Infrastructure.Storage.Storage.Services
     {
         private readonly string tableName = "Bids";
         private readonly string dataBaseName = "leilaoDB";
-        private readonly string connString = "Server=localhost;Database=master;Trusted_Connection = True;";
+        private readonly string connString = ReadJsonService.LoadJson().connString;
 
         public List<Bid> SelectMany(int size)
         {

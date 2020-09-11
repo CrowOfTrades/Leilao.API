@@ -9,7 +9,7 @@ namespace Leilao.Infrastructure.Storage.Storage.Services
     {
         private readonly string tableName = "Users";
         private readonly string dataBaseName = "leilaoDB";
-        private readonly string connString = "Server=localhost;Database=master;Trusted_Connection = True;";
+        private readonly string connString = ReadJsonService.LoadJson().connString;
 
         public List<User> SelectMany(int size)
         {
