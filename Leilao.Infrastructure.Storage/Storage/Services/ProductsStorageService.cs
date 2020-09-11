@@ -20,7 +20,7 @@ namespace Leilao.Infrastructure.Storage.Storage.Services
 
         public void Insert(Product product)
         {
-            string query = $"USE {dataBaseName}; INSERT INTO {tableName} (ID, Name, Price, CreateOn) VALUES ('{Guid.NewGuid()}', '{product.Name}', {product.Price.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}, '{DateTime.Now}');"
+            string query = $"USE {dataBaseName}; INSERT INTO {tableName} (ID, Name, Price, CreateOn) VALUES ('{Guid.NewGuid()}', '{product.Name}', {product.Price.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}, '{DateTime.Now}');";
             DoQuery(query);
         }
 
