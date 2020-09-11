@@ -27,12 +27,24 @@ namespace Leilao.Infrastructure.Storage.Storage.Services
         public void Update(Guid productId, Dictionary<string, string> values)
         {
             string query = $"USE {dataBaseName}; UPDATE {tableName} SET ";
+
+            int count = 0;
             foreach(var item in values)
             {
-                query += $"{item.Key} = '{item.Value}',";
+                count++;
+                query += $"{item.Key} = '{item.Value}'";
+                if (count < values.Count)
+                    query += ", ";
             }
-            query += $"WHERE ID = {productId}";
+            query += $" WHERE ID = '{productId}'";
 
+            DoQuery(query);
+
+        }
+
+        public void UpdatePrice(Guid productId, decimal value)
+        {
+            string query = $"USE {dataBaseName}; UPDATE {tableName} SET Price = {value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)} WHERE ID = '{productId}'";
             DoQuery(query);
 
         }
