@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Leilao.Api.SQL;
-using Leilao.domain.Contracts.SQL;
+using Leilao.Infrastructure.Storage.Storage.Models;
+using Leilao.Infrastructure.Storage.Storage.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Leilao.API.Controllers
 {
@@ -18,11 +16,8 @@ namespace Leilao.API.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly IStorageService _storageService;
-
-        public WeatherForecastController(IStorageService storageService)
+        public WeatherForecastController()
         {
-            _storageService = storageService;
         }
 
         [HttpGet]
@@ -36,12 +31,6 @@ namespace Leilao.API.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
-        }
-
-        [HttpGet("DataBase")]
-        public void Test()
-        {
-            _storageService.Test();
         }
     }
 }

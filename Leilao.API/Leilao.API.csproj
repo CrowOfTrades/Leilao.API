@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Leilao.Api.SQL\Leilao.Api.SQL.csproj" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Leilao.Infrastructure.Storage\Leilao.Infrastructure.Storage.csproj" />
   </ItemGroup>
 
 
